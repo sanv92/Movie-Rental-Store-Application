@@ -14,7 +14,7 @@ public class MovieRentalDto {
     private String priceType;
     private Double price;
     private Double priceForOneDay;
-    private Double priceForAllDay;
+    private Double priceForAllDays;
     private Double discount;
     private Double lateCharge;
 
@@ -79,8 +79,8 @@ public class MovieRentalDto {
         return priceForOneDay;
     }
 
-    public Double getPriceForAllDay() {
-        return priceForAllDay;
+    public Double getPriceForAllDays() {
+        return priceForAllDays;
     }
 
     public Double getDiscount() {
@@ -147,8 +147,8 @@ public class MovieRentalDto {
         return this;
     }
 
-    public MovieRentalDto setPriceForAllDay(Double priceForAllDay) {
-        this.priceForAllDay = priceForAllDay;
+    public MovieRentalDto setPriceForAllDays(Double priceForAllDays) {
+        this.priceForAllDays = priceForAllDays;
         return this;
     }
 

@@ -28,7 +28,7 @@ public class MovieRentalToMovieRentalDto implements Converter<MovieRental, Movie
                 .setPriceType(movieRental.getPriceType().name())
                 .setPrice(movieRental.getPrice())
                 .setPriceForOneDay(movieRental.calculatePrice())
-                .setPriceForAllDay(movieRental.calculatePriceByDays())
+                .setPriceForAllDays(movieRental.calculatePriceByDays())
                 .setDiscount(movieRental.calculateDiscount())
                 .setLateCharge(movieRental.getLateCharge())
                 .setPoints(movieRental.getPoints())

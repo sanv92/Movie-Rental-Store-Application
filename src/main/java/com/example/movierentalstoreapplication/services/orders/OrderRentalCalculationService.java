@@ -32,8 +32,7 @@ public class OrderRentalCalculationService extends AbstractOrderRental {
         MovieRental movieRental = movieRentalRepository.findById(rentalId)
                 .orElseThrow(ResourceNotFoundException::new);
 
-        return movieRentalService.returnMovie(
-                movieRental.getOrder().getCustomer(),
+        return movieRentalService.calculateReturnMovie(
                 movieRental
         );
     }

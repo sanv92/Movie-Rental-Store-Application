@@ -1,7 +1,6 @@
 package com.example.movierentalstoreapplication.services.orders;
 
 import com.example.movierentalstoreapplication.exceptions.ResourceNotFoundException;
-import com.example.movierentalstoreapplication.model.Customer;
 import com.example.movierentalstoreapplication.model.movie.MovieOrder;
 import com.example.movierentalstoreapplication.model.movie.MovieRental;
 import com.example.movierentalstoreapplication.repositories.CustomerRepository;
@@ -53,11 +52,7 @@ public abstract class AbstractOrder implements Order {
                 .orElseThrow(ResourceNotFoundException::new);
     }
 
-    public MovieOrder calculateCreateOrder(CreateOrderRentalsRequest createOrderRentalsRequest) {
-        Customer customer = customerRepository.findById(createOrderRentalsRequest.getCustomerId())
-                .orElseThrow(ResourceNotFoundException::new);
-
-        MovieOrder movieOrder = new MovieOrder(customer, MovieOrder.Status.OPENED);
+    public MovieOrder calculateCreateOrder(MovieOrder movieOrder, CreateOrderRentalsRequest createOrderRentalsRequest) {
         List<MovieRental> movieRentals = createOrderRentalsRequest.getRentals()
                 .stream()
                 .map(rental -> rentalService.createRental(

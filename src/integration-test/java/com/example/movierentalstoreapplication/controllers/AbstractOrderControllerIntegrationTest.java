@@ -61,7 +61,7 @@ abstract class AbstractOrderControllerIntegrationTest extends MockMvcIntegration
                 .setReturnDate(LocalDateTime.of(1992, 7, 11, 0, 1))
                 .setLateCharge(3.0)
                 .setPriceForOneDay(3.0)
-                .setPriceForAllDay(3.0)
+                .setPriceForAllDays(3.0)
                 .setDiscount(0.0)
                 .setExtraDays(0);
     }
