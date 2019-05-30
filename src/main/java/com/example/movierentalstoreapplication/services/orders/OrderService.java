@@ -31,7 +31,7 @@ public class OrderService extends AbstractOrder {
         MovieOrder movieOrder = new MovieOrder(customer, MovieOrder.Status.OPENED);
 
         return movieOrderRepository.save(
-                this.calculateCreateOrder(movieOrder, createOrderRentalsRequest)
+                this.calculateOrder(movieOrder, createOrderRentalsRequest)
         );
     }
 }

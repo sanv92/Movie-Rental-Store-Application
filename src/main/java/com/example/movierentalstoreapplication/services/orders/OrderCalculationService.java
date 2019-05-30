@@ -23,7 +23,7 @@ public class OrderCalculationService extends AbstractOrder {
 
     @Transactional
     public MovieOrder createOrder(CreateOrderRentalsRequest createOrderRentalsRequest) {
-        return this.calculateCreateOrder(
+        return this.calculateOrder(
                 new MovieOrder(),
                 createOrderRentalsRequest
         );

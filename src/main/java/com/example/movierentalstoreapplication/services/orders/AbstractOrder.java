@@ -41,18 +41,7 @@ public abstract class AbstractOrder implements Order {
         this.rentalService = rentalService;
     }
 
-    @Transactional(readOnly = true)
-    public List<MovieOrder> findAll(Pageable pageable) {
-        return movieOrderRepository.findAll(pageable).getContent();
-    }
-
-    @Transactional(readOnly = true)
-    public MovieOrder findById(Long orderId) {
-        return movieOrderRepository.findById(orderId)
-                .orElseThrow(ResourceNotFoundException::new);
-    }
-
-    public MovieOrder calculateCreateOrder(MovieOrder movieOrder, CreateOrderRentalsRequest createOrderRentalsRequest) {
+    public MovieOrder calculateOrder(MovieOrder movieOrder, CreateOrderRentalsRequest createOrderRentalsRequest) {
         List<MovieRental> movieRentals = createOrderRentalsRequest.getRentals()
                 .stream()
                 .map(rental -> rentalService.createRental(
@@ -67,6 +56,17 @@ public abstract class AbstractOrder implements Order {
 
         return movieOrder
                 .setRentals(movieRentals);
+    }
+
+    @Transactional(readOnly = true)
+    public List<MovieOrder> findAll(Pageable pageable) {
+        return movieOrderRepository.findAll(pageable).getContent();
+    }
+
+    @Transactional(readOnly = true)
+    public MovieOrder findById(Long orderId) {
+        return movieOrderRepository.findById(orderId)
+                .orElseThrow(ResourceNotFoundException::new);
     }
 
     @Transactional
