@@ -1,5 +1,6 @@
 package com.example.movierentalstoreapplication.controllers;
 
+import com.example.movierentalstoreapplication.dtos.MovieOrderCalculationDto;
 import com.example.movierentalstoreapplication.dtos.MovieOrderDto;
 import com.example.movierentalstoreapplication.services.orders.CreateOrderRentalsRequest;
 import com.example.movierentalstoreapplication.services.orders.Order;
@@ -58,9 +59,9 @@ public class OrderController {
     }
 
     @PostMapping("/calculation")
-    public MovieOrderDto orderCalculation(@Valid @RequestBody CreateOrderRentalsRequest createOrderRentalsRequest) {
+    public MovieOrderCalculationDto orderCalculation(@Valid @RequestBody CreateOrderRentalsRequest createOrderRentalsRequest) {
         return conversionService.convert(
-                orderCalculation.createOrder(createOrderRentalsRequest), MovieOrderDto.class
+                orderCalculation.createOrder(createOrderRentalsRequest), MovieOrderCalculationDto.class
         );
     }
 

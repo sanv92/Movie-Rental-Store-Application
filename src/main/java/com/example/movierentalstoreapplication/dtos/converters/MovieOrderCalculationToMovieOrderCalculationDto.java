@@ -1,6 +1,6 @@
 package com.example.movierentalstoreapplication.dtos.converters;
 
-import com.example.movierentalstoreapplication.dtos.MovieOrderDto;
+import com.example.movierentalstoreapplication.dtos.MovieOrderCalculationDto;
 import com.example.movierentalstoreapplication.model.movie.MovieOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
@@ -9,24 +9,21 @@ import org.springframework.stereotype.Component;
 import java.util.stream.Collectors;
 
 @Component
-public class MovieOrderToMovieOrderDto implements Converter<MovieOrder, MovieOrderDto> {
+public class MovieOrderCalculationToMovieOrderCalculationDto implements Converter<MovieOrder, MovieOrderCalculationDto> {
 
     private MovieRentalToMovieRentalDto movieRentalToMovieRentalDto;
 
-    public MovieOrderToMovieOrderDto() {
+    public MovieOrderCalculationToMovieOrderCalculationDto() {
     }
 
     @Autowired
-    public MovieOrderToMovieOrderDto(MovieRentalToMovieRentalDto movieRentalToMovieRentalDto) {
+    public MovieOrderCalculationToMovieOrderCalculationDto(MovieRentalToMovieRentalDto movieRentalToMovieRentalDto) {
         this.movieRentalToMovieRentalDto = movieRentalToMovieRentalDto;
     }
 
     @Override
-    public MovieOrderDto convert(MovieOrder movieOrder) {
-        return new MovieOrderDto()
-                .setId(movieOrder.getId())
-                .setStatus(movieOrder.getStatus().toString())
-                .setCustomerId(movieOrder.getCustomer().getId())
+    public MovieOrderCalculationDto convert(MovieOrder movieOrder) {
+        return new MovieOrderCalculationDto()
                 .setTotalPrice(movieOrder.calculateTotalPrice())
                 .setTotalPriceForAllDays(movieOrder.calculateTotalPriceByDays())
                 .setTotalDiscount(movieOrder.calculateTotalDiscount())

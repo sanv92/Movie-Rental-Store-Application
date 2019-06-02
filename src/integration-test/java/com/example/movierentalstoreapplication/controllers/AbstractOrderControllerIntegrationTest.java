@@ -105,7 +105,7 @@ abstract class AbstractOrderControllerIntegrationTest extends MockMvcIntegration
                 .setTotalLateCharge(9.0)
                 .setTotalPoints(12)
                 .setTotalPrice(3.0)
-                .setTotalPriceForAllDay(9.0)
+                .setTotalPriceForAllDays(9.0)
                 .setTotalDiscount(0.0)
                 .setTotalPriceWithLateCharge(18.0);
     }
